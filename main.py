@@ -2,13 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
 from time import sleep
+links = []
+subtext = []
 
-res = requests.get('https://news.ycombinator.com/news')
-soup = BeautifulSoup(res.text, 'html.parser')
-links = soup.select('.titlelink')
-subtext = soup.select('.subtext')
 
-for i in range(2, 10):
+for i in range(10):
 	sleep(0.1)
 	res = requests.get(f'https://news.ycombinator.com/news?p={i}')
 	soup = BeautifulSoup(res.text, 'html.parser')
